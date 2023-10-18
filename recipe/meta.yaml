@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/lapets/{{ name }}/archive/refs/tags/{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: edcd27daedcdea62711517fd80e1404e60f5faa93a302fb7a14c4ed3df7d644a
 
 build:
