@@ -1,0 +1,40 @@
+{% set name = "parts" %}
+{% set version = "1.7.0" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: file:///Users/jolivieri/repos/aggregate/parts-feedstock/parts-1.7.0.tar.gz
+  sha256: 4db70581628a8075c5ca2d4dab0572d484c61c449be19bac8af3a91566b3375b
+
+build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
+
+requirements:
+  host:
+    - python >=3.7
+    - setuptools >=67.6
+    - pip
+  run:
+    - python >=3.7
+
+test:
+  imports:
+    - parts
+  commands:
+    - pip check
+  requires:
+    - pip
+
+about:
+  summary: Minimal library that enables partitioning of iterable objects in a concise manner.
+  license: MIT
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - boldorider4
