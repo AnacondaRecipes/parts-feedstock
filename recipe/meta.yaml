@@ -1,0 +1,50 @@
+{% set name = "parts" %}
+{% set version = "1.7.0" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 4db70581628a8075c5ca2d4dab0572d484c61c449be19bac8af3a91566b3375b
+
+build:
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
+  number: 0
+
+requirements:
+  host:
+    - python
+    - setuptools
+    - pip
+    - wheel
+  run:
+    - python
+
+test:
+  imports:
+    - parts
+  commands:
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: https://github.com/lapets/parts
+  license: MIT
+  license_file: LICENSE
+  license_family: MIT
+  summary: Minimal library that enables partitioning of iterable objects in a concise manner.
+  description: |
+    This library provides a function for partitioning iterable data structure instances. When the number of parts is
+    specified explicitly, it is treated as a strict requirement and an exception is raised when it cannot be satisfied.
+    When a length for all parts (or each part) is specified explicitly, a best-effort approach is used: as many parts
+    of the specified length are retrieved as possible, with the possibility that some parts at the end of the partition
+    sequence have a shorter (but still non-zero) length.
+  doc_url: https://github.com/lapets/parts
+  dev_url: https://github.com/lapets/parts
+
+extra:
+  recipe-maintainers:
+    - boldorider4
