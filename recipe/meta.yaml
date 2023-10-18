@@ -32,7 +32,7 @@ test:
     - pytest tests
   requires:
     - pip
-    - pytests
+    - pytest
 
 about:
   home: https://github.com/lapets/parts
